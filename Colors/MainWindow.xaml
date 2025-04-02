@@ -1,0 +1,74 @@
+﻿<Window x:Class="Colors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Colors" 
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="RGB Histograms" Height="800" Width="1200">
+    <Window.Resources>
+        <Style TargetType="lvc:Axis">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Кнопка и изображение -->
+        <Button Grid.Row="0" Grid.Column="0" Content="Открыть файл" HorizontalAlignment="Left" Margin="10" Width="95" Click="Button_Click"/>
+        <Image x:Name="img" Grid.Row="1" Grid.Column="0" Height="315" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="319"/>
+
+        <!-- Красный канал -->
+        <lvc:CartesianChart Grid.Row="2" Grid.Column="0" x:Name="RedChart" Series="{Binding RedSeries}" LegendLocation="None" Margin="10">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Значение красного" Labels="{Binding Labels}" MinValue="0" MaxValue="255"/>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Количество пикселей" MinValue="0"/>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
+        <!-- Зеленый канал -->
+        <lvc:CartesianChart Grid.Row="2" Grid.Column="1" x:Name="GreenChart" Series="{Binding GreenSeries}" LegendLocation="None" Margin="10">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Значение зеленого" Labels="{Binding Labels}" MinValue="0" MaxValue="255"/>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Количество пикселей" MinValue="0"/>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
+        <!-- Синий канал -->
+        <lvc:CartesianChart Grid.Row="2" Grid.Column="2" x:Name="BlueChart" Series="{Binding BlueSeries}" LegendLocation="None" Margin="10">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Значение синего" Labels="{Binding Labels}" MinValue="0" MaxValue="255"/>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Количество пикселей" MinValue="0"/>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
+        <lvc:CartesianChart Grid.Row="1" Grid.Column="2" x:Name="MidChart" Series="{Binding MidSeries}" LegendLocation="None" Margin="10">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Средние значения" Labels="{Binding Labels}" MinValue="0" MaxValue="255"/>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Количество пикселей" MinValue="0"/>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+        
+    </Grid>
+</Window>
