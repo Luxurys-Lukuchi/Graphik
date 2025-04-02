@@ -1,0 +1,31 @@
+﻿<Window x:Class="FireRoom3D.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:h="http://helix-toolkit.org/wpf"
+        Title="3D Fire Animation" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <h:HelixViewport3D x:Name="viewport" Grid.Row="0"
+                          ShowCameraInfo="True"
+                          ShowFrameRate="True"
+                          ZoomExtentsWhenLoaded="True"
+                          IsPanEnabled="True"
+                          IsRotationEnabled="True"
+                          IsZoomEnabled="True"
+                          RotateAroundMouseDownPoint="True">
+
+            <h:SunLight/>
+            <!--<h:GridLinesVisual3D Width="20" Length="20" MinorDistance="1" MajorDistance="5" Thickness="0.01"/>-->
+        </h:HelixViewport3D>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button x:Name="btnStart" Content="Старт" Width="100" Height="30" Margin="5" Click="BtnStart_Click"/>
+            <Button x:Name="btnStop" Content="Стоп" Width="100" Height="30" Margin="5" Click="BtnStop_Click" IsEnabled="False"/>
+            <Button Content="Сброс камеры" Width="100" Height="30" Margin="5" Click="BtnResetCamera_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
